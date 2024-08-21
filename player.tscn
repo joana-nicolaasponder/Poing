@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://y87f233n5g38"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_32dwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkrs7"]
+size = Vector2(20, 214)
+
+[node name="player1" type="CharacterBody2D"]
+script = ExtResource("1_32dwv")
+
+[node name="Paddle" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 204.0
+color = Color(1, 0.384314, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 97)
+shape = SubResource("RectangleShape2D_bkrs7")
+debug_color = Color(0.65069, 0.519505, 5.07808e-07, 0.42)

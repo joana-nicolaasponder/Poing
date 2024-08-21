@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1418ibepeflc"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_l3x4s"]
+[ext_resource type="PackedScene" uid="uid://y87f233n5g38" path="res://player.tscn" id="1_yguuq"]
+[ext_resource type="PackedScene" uid="uid://bmp55mcg14mf3" path="res://ball.tscn" id="2_uhptv"]
+[ext_resource type="PackedScene" uid="uid://c3y7re2v8pila" path="res://player_2.tscn" id="3_o3qvw"]
+[ext_resource type="Script" path="res://p1score.gd" id="5_tcvbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0yth"]
+size = Vector2(1174, 91)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oigqf"]
+size = Vector2(102, 676)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_l3x4s")
+
+[node name="top" type="StaticBody2D" parent="."]
+collision_layer = 3
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+position = Vector2(579, -43.5)
+shape = SubResource("RectangleShape2D_j0yth")
+
+[node name="bottom" type="StaticBody2D" parent="."]
+collision_layer = 3
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom"]
+position = Vector2(575, 686)
+shape = SubResource("RectangleShape2D_j0yth")
+
+[node name="left" type="Area2D" parent="."]
+collision_layer = 3
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-40, 327)
+shape = SubResource("RectangleShape2D_oigqf")
+
+[node name="right" type="Area2D" parent="."]
+collision_layer = 3
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(1203, 328)
+shape = SubResource("RectangleShape2D_oigqf")
+
+[node name="net" type="Line2D" parent="."]
+position = Vector2(0, 1.25)
+scale = Vector2(1, 1.25)
+points = PackedVector2Array(582, 2.08165e-12, 582, 550)
+default_color = Color(0.669897, 0.598752, 0.841013, 1)
+metadata/_edit_lock_ = true
+
+[node name="player" parent="." instance=ExtResource("1_yguuq")]
+position = Vector2(36, 217)
+
+[node name="ball" parent="." instance=ExtResource("2_uhptv")]
+position = Vector2(241, 174)
+
+[node name="player2" parent="." instance=ExtResource("3_o3qvw")]
+position = Vector2(1128, 201)
+
+[node name="UserInterface" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="p1score" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 7.0
+offset_right = 571.0
+offset_bottom = 30.0
+text = "0 "
+script = ExtResource("5_tcvbs")
+
+[node name="p2score" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 8.0
+offset_right = 645.0
+offset_bottom = 31.0
+text = "0
+"
