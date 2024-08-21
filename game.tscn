@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1418ibepeflc"]
+[gd_scene load_steps=7 format=3 uid="uid://d1418ibepeflc"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_l3x4s"]
 [ext_resource type="PackedScene" uid="uid://y87f233n5g38" path="res://player.tscn" id="1_yguuq"]
 [ext_resource type="PackedScene" uid="uid://bmp55mcg14mf3" path="res://ball.tscn" id="2_uhptv"]
 [ext_resource type="PackedScene" uid="uid://c3y7re2v8pila" path="res://player_2.tscn" id="3_o3qvw"]
-[ext_resource type="Script" path="res://p1score.gd" id="5_tcvbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0yth"]
 size = Vector2(1174, 91)
@@ -39,7 +38,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
-position = Vector2(-40, 327)
+position = Vector2(-67, 330)
 shape = SubResource("RectangleShape2D_oigqf")
 
 [node name="right" type="Area2D" parent="."]
@@ -48,7 +47,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
-position = Vector2(1203, 328)
+position = Vector2(1224, 324)
 shape = SubResource("RectangleShape2D_oigqf")
 
 [node name="net" type="Line2D" parent="."]
@@ -67,27 +66,19 @@ position = Vector2(241, 174)
 [node name="player2" parent="." instance=ExtResource("3_o3qvw")]
 position = Vector2(1128, 201)
 
-[node name="UserInterface" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="p1score" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 27.0
+offset_right = 568.0
+offset_bottom = 50.0
+text = "0"
 
-[node name="p1score" type="Label" parent="UserInterface"]
-layout_mode = 0
-offset_left = 531.0
-offset_top = 7.0
-offset_right = 571.0
-offset_bottom = 30.0
-text = "0 "
-script = ExtResource("5_tcvbs")
-
-[node name="p2score" type="Label" parent="UserInterface"]
-layout_mode = 0
+[node name="p2score" type="Label" parent="."]
 offset_left = 605.0
-offset_top = 8.0
+offset_top = 28.0
 offset_right = 645.0
-offset_bottom = 31.0
-text = "0
-"
+offset_bottom = 51.0
+text = "0"
+
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
