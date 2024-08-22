@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed = 500.0
 
 
+
 func _physics_process(delta):
 	var input_direction = 0 
 	
@@ -24,4 +25,3 @@ func _physics_process(delta):
 
 	
 	position.y = clamp(position.y, 0, viewport_height - paddle_height)
-	

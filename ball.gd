@@ -10,8 +10,10 @@ func _ready():
 	
 	_reset_ball()
 	apply_central_impulse(initial_velocity.normalized() * speed)
+	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	
 	state.linear_velocity = linear_velocity.normalized() * speed
 	
 	if should_reset:
@@ -24,5 +26,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 func _reset_ball():
 	print('reset ball')
+	print(speed)
 	should_reset = true
+	
+	
 	

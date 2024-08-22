@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://y87f233n5g38"]
+[gd_scene load_steps=4 format=3 uid="uid://y87f233n5g38"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_32dwv"]
+[ext_resource type="AudioStream" uid="uid://xja1l45lw46d" path="res://Poing.wav" id="2_1351b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkrs7"]
 size = Vector2(20, 214)
@@ -20,3 +21,6 @@ color = Color(1, 0.384314, 1, 1)
 position = Vector2(0, 97)
 shape = SubResource("RectangleShape2D_bkrs7")
 debug_color = Color(0.65069, 0.519505, 5.07808e-07, 0.42)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1351b")

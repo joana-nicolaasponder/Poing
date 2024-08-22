@@ -7,6 +7,7 @@ var linear_velocity
 var initial_velocity = Vector2(-300,100)
 var speed = 600.0
 var ball 
+var score_limit = 10
 
 func _ready():
 	ball = $ball 
@@ -20,15 +21,20 @@ func _on_left_body_entered(body: Node2D) -> void:
 	
 	p2score += 1
 	$p2score.text = str(p2score)
-	_reset()
-	
+	if p2score < score_limit:
+		_reset()
+	else:
+		_game_over()
 
 
 func _on_right_body_entered(body: Node2D) -> void:
 	
 	p1score += 1
 	$p1score.text = str(p1score)
-	_reset()
+	if p1score < score_limit:
+		_reset()
+	else:
+		_game_over()
 
 func _reset(): 
 	

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1418ibepeflc"]
+[gd_scene load_steps=8 format=3 uid="uid://d1418ibepeflc"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_l3x4s"]
 [ext_resource type="PackedScene" uid="uid://y87f233n5g38" path="res://player.tscn" id="1_yguuq"]
 [ext_resource type="PackedScene" uid="uid://bmp55mcg14mf3" path="res://ball.tscn" id="2_uhptv"]
 [ext_resource type="PackedScene" uid="uid://c3y7re2v8pila" path="res://player_2.tscn" id="3_o3qvw"]
+[ext_resource type="AudioStream" uid="uid://xja1l45lw46d" path="res://Poing.wav" id="5_pvds4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0yth"]
 size = Vector2(1174, 91)
@@ -71,6 +72,7 @@ offset_left = 528.0
 offset_top = 27.0
 offset_right = 568.0
 offset_bottom = 50.0
+theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="p2score" type="Label" parent="."]
@@ -78,7 +80,13 @@ offset_left = 605.0
 offset_top = 28.0
 offset_right = 645.0
 offset_bottom = 51.0
+theme_override_font_sizes/font_size = 50
 text = "0"
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pvds4")
+volume_db = 12.238
 
 [connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
 [connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="ball" to="player" method="_on_ball_body_entered"]
